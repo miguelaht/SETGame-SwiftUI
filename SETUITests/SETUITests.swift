@@ -1,10 +1,3 @@
-//
-//  SETUITests.swift
-//  SETUITests
-//
-//  Created by Miguel Angel Hernandez Torrez on 1/4/21.
-//
-
 import XCTest
 
 class SETUITests: XCTestCase {

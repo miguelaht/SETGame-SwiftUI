@@ -1,10 +1,3 @@
-//
-//  SETTests.swift
-//  SETTests
-//
-//  Created by Miguel Angel Hernandez Torrez on 1/4/21.
-//
-
 import XCTest
 @testable import SET
 
