@@ -6,7 +6,7 @@ struct SetGameView: View {
 		NavigationView{
 			VStack{
 				Grid(viewModel.cards){ card in
-					cardView(card: card)
+					CardView(card: card)
 				}
 				Button("Deal 3 Cards"){
 					viewModel.dealThreeCards()
@@ -21,28 +21,7 @@ struct SetGameView: View {
 	}
 }
 
-struct cardView: View {
-	var card: SetGame.Card
-	
-	var body: some View{
-		GeometryReader{ geometry in
-			self.body(for: geometry.size)
-		}
-	}
-	
-	private func body(for size: CGSize)-> some View{
-		ZStack{
-			Text("\(card.shape.hashValue)")
-				.font(Font.system(size: fontSize(for: size)))
-		}
-	}
-	
-	// MARK: - Drawing constants
-	private let fontScaleFactor: CGFloat = 0.7
-	private func fontSize(for size: CGSize) -> CGFloat{
-		min(size.width, size.height) * fontScaleFactor
-	}
-}
+
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
