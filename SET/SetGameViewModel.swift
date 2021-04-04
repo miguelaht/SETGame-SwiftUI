@@ -14,7 +14,11 @@ class SetGameViewModel: ObservableObject{
 		game.cards
 	}
 	
-	func select(card: SetGame.Card){
+	var setsFound: Int{
+		game.setsFound()
+	}
+	
+	func selectCard(card: SetGame.Card){
 		game.selectCard(card: card)
 	}
 	
@@ -25,4 +29,5 @@ class SetGameViewModel: ObservableObject{
 	func newGame(){
 		game.newGame()
 	}
+	
 }

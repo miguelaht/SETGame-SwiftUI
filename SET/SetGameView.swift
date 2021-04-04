@@ -6,11 +6,14 @@ struct SetGameView: View {
 		NavigationView{
 			VStack{
 				Grid(viewModel.cards){ card in
-					CardView(card: card)
+					CardView(card: card).onTapGesture{
+						viewModel.selectCard(card: card)
+					}
 				}
+				Text("Sets found: \(viewModel.setsFound)").font(.caption).animation(.spring())
 				Button("Deal 3 Cards"){
 					viewModel.dealThreeCards()
-				}.padding()
+				}.font(.title2)
 			}
 			.padding()
 			.onAppear { withAnimation(.easeInOut(duration: 1)) { viewModel.newGame() }}

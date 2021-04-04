@@ -11,8 +11,8 @@ struct CardView: View {
 	var card: SetGame.Card
 	
 	var body: some View{
-		RoundedRectangle(cornerRadius: cornerRadius).fill(cardColor)
-		RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth).padding(5)
+		RoundedRectangle(cornerRadius: cornerRadius).fill(cardColor).padding(cardPadding)
+		RoundedRectangle(cornerRadius: cornerRadius).stroke(cardStrokeColor, lineWidth: edgeLineWidth).padding(cardPadding)
 		VStack(spacing: 1){
 			ForEach(0..<card.numberOfShapes.rawValue){_ in
 				self.drawShapesInCard().aspectRatio(shapeAspectRatio, contentMode: .fit)
@@ -42,22 +42,33 @@ struct CardView: View {
 	
 	// MARK: - Drawing constants
 	private let cornerRadius: CGFloat = 10
-	private let edgeLineWidth: CGFloat = 1
+	private let edgeLineWidth: CGFloat = 1.5
 	private let shapeEdgeWidth: CGFloat = 2
-	private let cardColor: Color = Color.white
 	private let shapePadding: CGFloat = 2
 	private let shapeAspectRatio: CGFloat = 2
 	private let shapeViewPadding: CGFloat = 10
+	
 	
 	private var shapeColor: Color{
 		switch card.color{
 			case .Green:
 				return Color.green
 			case .Red:
-				return Color.red
+				return Color.red.opacity(0.8)
 			case .Purple:
-				return Color.purple
+				return Color.purple.opacity(0.8)
 		}
 	}
-
+	
+	
+	var cardPadding: CGFloat = 5
+	var cardColor: Color {
+		return card.isSelected ? Color.blue.opacity(0.1) : Color.white
+	}
+	var cardStrokeColor: Color{
+		return card.isSelected ? Color.blue : Color.black
+	}
+	
+	
+	
 }

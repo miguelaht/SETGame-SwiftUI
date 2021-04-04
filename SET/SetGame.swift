@@ -10,7 +10,7 @@ import Foundation
 struct SetGame{
 	private var deck = Array<Card>()
 	private(set) var cards = Array<Card>()
-	
+	private var numberOfSelectedCards: Int = 0
 	
 	mutating func newGame(){
 		self.deck = self.createDeck().shuffled()
@@ -34,9 +34,14 @@ struct SetGame{
 		return deck
 	}
 	
+	func setsFound()->Int{
+		(81 - deck.count - cards.count)/3
+	}
+	
 	mutating func selectCard(card selectedCard: Card){
 		if let selectedIndex = cards.firstIndex(matching: selectedCard){
 			cards[selectedIndex].isSelected = !cards[selectedIndex].isSelected
+			numberOfSelectedCards += 1
 		}
 	}
 	
