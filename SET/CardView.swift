@@ -26,11 +26,14 @@ struct CardView: View {
 		ZStack{
 			switch card.shape {
 				case .Diamond:
+					Diamond().shading(card.shading)
 					Diamond().stroke(lineWidth: shapeEdgeWidth)
 				case .Squiggle:
 					// FIXME: Write Squiggle shape struct
+					Rectangle().shading(card.shading)
 					Rectangle().stroke(lineWidth: shapeEdgeWidth)
 				case .Oval:
+					Capsule().shading(card.shading)
 					Capsule().stroke(lineWidth: shapeEdgeWidth)
 					
 			}
@@ -56,4 +59,5 @@ struct CardView: View {
 				return Color.purple
 		}
 	}
+
 }

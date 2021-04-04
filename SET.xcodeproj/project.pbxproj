@@ -22,6 +22,8 @@
 		62DB01F226162B5D00F114F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62DB01F026162B5D00F114F0 /* LaunchScreen.storyboard */; };
 		62DB01FD26162B5E00F114F0 /* SETTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DB01FC26162B5E00F114F0 /* SETTests.swift */; };
 		62DB020826162B5E00F114F0 /* SETUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DB020726162B5E00F114F0 /* SETUITests.swift */; };
+		62E94C0B261A683700C41CB9 /* View+Shade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E94C0A261A683700C41CB9 /* View+Shade.swift */; };
+		62E94C13261A6A5000C41CB9 /* Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E94C12261A6A5000C41CB9 /* Stripes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		62DB020326162B5E00F114F0 /* SETUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SETUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DB020726162B5E00F114F0 /* SETUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SETUITests.swift; sourceTree = "<group>"; };
 		62DB020926162B5E00F114F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62E94C0A261A683700C41CB9 /* View+Shade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Shade.swift"; sourceTree = "<group>"; };
+		62E94C12261A6A5000C41CB9 /* Stripes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 				627F0CC02619261400662049 /* Array+Identifiable.swift */,
 				62C22B94261A2E1800A1A11D /* Diamond.swift */,
 				62C22B99261A344E00A1A11D /* CardView.swift */,
+				62E94C0A261A683700C41CB9 /* View+Shade.swift */,
+				62E94C12261A6A5000C41CB9 /* Stripes.swift */,
 			);
 			path = SET;
 			sourceTree = "<group>";
@@ -293,9 +299,11 @@
 				62DB01EA26162B5C00F114F0 /* SetGameView.swift in Sources */,
 				62C22B9A261A344E00A1A11D /* CardView.swift in Sources */,
 				627F0CBC2619225C00662049 /* SetGameViewModel.swift in Sources */,
+				62E94C0B261A683700C41CB9 /* View+Shade.swift in Sources */,
 				627F0CC626192B1100662049 /* Grid.swift in Sources */,
 				62C22B95261A2E1800A1A11D /* Diamond.swift in Sources */,
 				627F0CC12619261400662049 /* Array+Identifiable.swift in Sources */,
+				62E94C13261A6A5000C41CB9 /* Stripes.swift in Sources */,
 				627F0CCB26192B5700662049 /* GridLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
