@@ -10,7 +10,10 @@ import Foundation
 struct SetGame{
 	private var deck = Array<Card>()
 	private(set) var cards = Array<Card>()
-	private var numberOfSelectedCards: Int = 0
+	
+	private var selectedCards: Array<Card>{
+		cards.filter{card in card.isSelected}
+	}
 	
 	mutating func newGame(){
 		self.deck = self.createDeck().shuffled()
@@ -39,10 +42,20 @@ struct SetGame{
 	}
 	
 	mutating func selectCard(card selectedCard: Card){
+		
 		if let selectedIndex = cards.firstIndex(matching: selectedCard){
 			cards[selectedIndex].isSelected = !cards[selectedIndex].isSelected
-			numberOfSelectedCards += 1
 		}
+		
+			let match = calculateMatch()
+			if  match == Card.matchingStatus.Match {
+				print("MATCH")
+				isMatch()
+			} else if match == Card.matchingStatus.NoMatch {
+				noMatch()
+				print("NO MATCH")
+			}
+		
 	}
 	
 	private mutating func drawCards(_ count: Int) {
@@ -57,6 +70,53 @@ struct SetGame{
 	
 	mutating func dealCards(){
 		drawCards(3)
+	}
+	
+	private func calculateMatch() -> Card.matchingStatus{
+		if selectedCards.count < 3{
+			return .Undefined
+		}
+		// same numer of shapes
+		let numberOfShapes = Set(self.selectedCards.map{card in card.numberOfShapes})
+		if numberOfShapes.count == 2{
+			return .NoMatch
+		}
+		
+		// same shape
+		let shapes =  Set(self.selectedCards.map{card in card.shape})
+		if shapes.count == 2{
+			return .NoMatch
+		}
+		
+		// same color
+		let colors = Set(self.selectedCards.map{card in card.color})
+		if colors.count == 2{
+			return .NoMatch
+		}
+		
+		// same shading
+		let shades =  Set(self.selectedCards.map{card in card.shading})
+		if shades.count == 2{
+			return .NoMatch
+		}
+		
+		return .Match
+	}
+	
+	mutating private func isMatch(){
+		// remove matching cards from cards showing in screen
+		for card in selectedCards{
+			let indexOfCard = cards.firstIndex(matching: card)!
+			self.cards.remove(at: indexOfCard)
+		}
+	}
+	
+	mutating private func noMatch(){
+		// deselect all selected cards
+		for card in selectedCards{
+			let indexOfCard = cards.firstIndex(matching: card)!
+			self.cards[indexOfCard].isSelected = !self.cards[indexOfCard].isSelected
+		}
 	}
 	
 	struct Card: Identifiable {
@@ -83,6 +143,10 @@ struct SetGame{
 		
 		enum NumberOfShape: Int, CaseIterable {
 			case One = 1, Two = 2, Three = 3
+		}
+		
+		enum matchingStatus: CaseIterable {
+			case Match, NoMatch, Undefined
 		}
 	}
 }
